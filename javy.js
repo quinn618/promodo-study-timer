@@ -134,6 +134,8 @@ startBtn.addEventListener("click", startTimer);
 pauseBtn.addEventListener("click", pauseTimer);
 resetBtn.addEventListener("click", resetTimer);
 
+// Save user settings to localStorage
+// Key: "promodoSettings" - stores work/break durations, session goal, and auto-start preference
 function saveSettings() {
   const settings = {
     workTime: document.getElementById("workLength").value,
@@ -146,6 +148,8 @@ function saveSettings() {
   localStorage.setItem("promodoSettings", JSON.stringify(settings));
 }
 
+// Load user settings from localStorage
+// Key: "promodoSettings" - retrieves saved work/break durations, session goal, and auto-start preference
 function loadSettings() {
   const saved = localStorage.getItem("promodoSettings");
   if (!saved) return;
@@ -167,6 +171,8 @@ function loadSettings() {
   updateDisplay();
 }
 
+// Save current timer state to localStorage
+// Key: "promodoTimerState" - stores current time, session number, break status, and running status
 function saveTimerState() {
   const timerState = {
     currentTime,
@@ -177,6 +183,8 @@ function saveTimerState() {
   localStorage.setItem("promodoTimerState", JSON.stringify(timerState));
 }
 
+// Load timer state from localStorage
+// Key: "promodoTimerState" - retrieves current time, session number, break status, and running status
 function loadTimerState() {
   const savedState = localStorage.getItem("promodoTimerState");
   if (!savedState) return;
